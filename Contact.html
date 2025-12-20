@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshport | Supplying Trust. Serving Growth.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description"
+        content="Freshport - Supplying Trust. Serving Growth. Premium ingredient supplier for hotels, resorts, and food manufacturers.">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="Freshport Logo">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="collection.html" class="nav-link">Collection</a></li>
+                    <li><a href="about.html#process" class="nav-link">Process</a></li>
+                    <li><a href="Contact.html" class="nav-link btn-nav">Partner With Us</a></li>
+                    <button class="close-menu" aria-label="Close Menu">&times;</button>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+
+        <section id="contact" class="section contact">
+            <div class="container contact-container">
+                <div class="contact-info reveal-left">
+                    <h2 class="section-title">Let's Elevate Your Menu</h2>
+                    <p>Ready to upgrade your supply chain? Contact our B2B team for a custom quote or sample kit.</p>
+
+                    <ul class="contact-list">
+                        <li>
+                            <strong>Headquarters</strong>
+                            <p>123 Culinary Ave, Food District, Metropolitan City</p>
+                        </li>
+                        <li>
+                            <strong>Wholesale Inquiries</strong>
+                            <p>orders@freshport.com</p>
+                        </li>
+                        <li>
+                            <strong>Phone</strong>
+                            <p>+1 (555) 123-4567</p>
+                        </li>
+                    </ul>
+                </div>
+                <form action="sendmail.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Company Name</label>
+                        <input type="text" id="name" required placeholder="e.g. Grand Hotel">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Business Email</label>
+                        <input type="email" id="email" required placeholder="name@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Business Type</label>
+                        <select id="type">
+                            <option value="hotel">Hotel / Resort</option>
+                            <option value="manufacturer">Food Manufacturer</option>
+                            <option value="restaurant">Restaurant Chain</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Requirements</label>
+                        <textarea id="message" rows="4"
+                            placeholder="Tell us what ingredients you are looking for..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Request Quote</button>
+                    <p class="form-status" id="formStatus"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Freshport Logo" style="height: 40px;">
+                </a>
+                <p>&copy; 2024 Freshport. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Supply Chain</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>
