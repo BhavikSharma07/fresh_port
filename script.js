@@ -115,28 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => observer.observe(el));
 
 
-    // --- Header Scroll Effect ---
-    // --- Header Scroll Effect ---
-    const header = document.getElementById('header');
-    // console.log('Header element:', header); // Debug log
 
-    function toggleHeaderScroll() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-            // console.log('Added scrolled class'); // Debug log
-        } else {
-            header.classList.remove('scrolled');
-            // console.log('Removed scrolled class'); // Debug log
-        }
-    }
-
-    if (header) {
-        // Initial check
-        toggleHeaderScroll();
-        window.addEventListener('scroll', toggleHeaderScroll);
-    } else {
-        // console.error('Header not found!');
-    }
 
 
     // --- Smooth Scrolling for Anchor Links ---
@@ -188,43 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Mobile Menu Toggle ---
-    const hamburger = document.querySelector('.hamburger');
-    const navList = document.querySelector('.nav-list');
-
-    if (hamburger && navList) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navList.classList.toggle('active');
-
-            // Optional: Prevent scrolling when menu is open
-            if (navList.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close menu when clicking a link
-        const navLinks = navList.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navList.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-
-        // Close menu when clicking the close button
-        const closeBtn = navList.querySelector('.close-menu');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navList.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-    }
+    initMobileMenu();
 
     // --- Homepage Slider Logic ---
     const track = document.querySelector('.slider-track');

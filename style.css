@@ -300,6 +300,11 @@ header.scrolled .logo img {
     color: var(--color-primary);
 }
 
+.hamburger,
+.close-menu {
+    display: none;
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -372,8 +377,8 @@ header.scrolled .logo img {
 
 /* Page Header (New) */
 .page-header {
-    padding-top: 150px;
-    padding-bottom: 80px;
+    padding-top: 100px;
+    padding-bottom: 30px;
     background: var(--color-bg-alt);
     text-align: center;
 }
@@ -577,8 +582,34 @@ header.scrolled .logo img {
 /* Contact */
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 0.8fr 1.2fr;
+    /* 45% / 55% split */
+    gap: 5rem;
+    align-items: center;
+    padding-top: 4rem;
+}
+
+/* Typography matching reference */
+.contact-info .section-title {
+    font-size: 2.8rem;
+    /* Reduced from 3.5rem */
+    font-family: var(--font-heading);
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    color: var(--color-text);
+}
+
+.contact-info p {
+    font-size: 1rem;
+    /* Reduced from 1.1rem */
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+}
+
+.contact.section {
+    padding-top: 2rem;
+    /* Reduce default section padding */
+    padding-bottom: 4rem;
 }
 
 .contact-list {
@@ -591,19 +622,50 @@ header.scrolled .logo img {
 }
 
 .contact-list strong {
-    display: block;
-    color: var(--color-text);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+}
+
+/* Premium Form Card */
+.contact-form {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    transition: transform 0.3s ease;
+}
+
+.contact-form:hover {
+    transform: translateY(-5px);
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
-.contact-list p {
-    color: var(--color-text-muted);
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    padding: 1rem 0;
+    /* Adjust padding for underline style */
+    transition: border-color 0.3s ease;
 }
 
-.contact-form {
-    background: var(--color-bg-alt);
-    padding: 2.5rem;
-    border-radius: var(--border-radius);
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: none;
 }
 
 .form-group {
@@ -713,104 +775,185 @@ footer {
     transform: translate(0);
 }
 
-/* Responsive */
-/* Responsive & Mobile Menu */
-.close-menu {
-    display: none;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    :root {
+        --container-width: 90%;
+        --section-padding: 4rem 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .process-grid,
+    .contact-container {
+        gap: 2rem;
+    }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 3rem 1.5rem;
+    }
 
-    /* Top Navigation Mobile */
+    /* Typography */
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Layout Grids - Switch to Single Column */
+    .process-grid,
+    .stats-grid,
+    .about-grid,
+    .contact-container,
+    .footer-content {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .about-grid {
+        display: flex;
+        flex-direction: column-reverse;
+        /* Image on top usually, but let's keep text first or standard flow */
+        gap: 3rem;
+    }
+
+    /* Product Grid - 1 Column for Mobile to avoid overflow */
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Header & Nav */
+    .logo img {
+        height: 45px;
+        /* Smaller logo */
+    }
+
     .nav-list {
         position: fixed;
-        top: 20px;
-        right: -110%;
-        width: calc(100% - 40px);
-        max-width: 300px;
-        height: auto;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        /* Not full width to show context or 100% if cleaner */
+        height: 100vh;
         background: #ffffff;
         flex-direction: column;
-        padding: 3rem 2rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         transition: right 0.4s var(--ease-out);
-        gap: 1.5rem;
         z-index: 1000;
+    }
+
+    .nav-list.active {
+        right: 0;
+    }
+
+    .Hamburger {
+        display: block;
     }
 
     .close-menu {
         display: block;
         position: absolute;
-        top: 15px;
-        right: 15px;
-        font-size: 1.5rem;
+        top: 25px;
+        right: 25px;
+        font-size: 2rem;
         cursor: pointer;
-        color: #219150;
-        background: none;
+        color: var(--color-text);
+        background: transparent;
         border: none;
     }
 
-    .nav-list.active {
-        right: 0;
-        /* Slide in */
+    /* Hero */
+    .hero {
+        padding-top: 100px;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer-content {
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-links {
         display: flex;
-        /* Ensure it's flex */
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
     }
 
-    .nav-link {
-        color: var(--color-text);
-        font-size: 1.2rem;
-        font-family: var(--font-heading);
+    .footer-links a {
+        margin-left: 0;
     }
 
-    /* Hamburger Menu */
-    .hamburger {
-        display: block;
-        cursor: pointer;
-        z-index: 1001;
-        /* Above the menu */
+    /* Slider */
+    .slide-content {
+        flex-direction: column;
     }
 
-    .hamburger span {
-        display: block;
-        width: 30px;
-        height: 3px;
-        background: var(--color-text);
-        margin-bottom: 6px;
-        transition: all 0.3s ease;
+    .slide-image,
+    .slide-text {
+        width: 100%;
     }
 
-    /* Hamburger Animation when Active */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
+    .slide-image {
+        height: 250px;
     }
 
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
+    .slide-text {
+        padding: 1.5rem;
     }
 
-    /* Since there are only 2 spans in HTML, we need to be careful. 
-       The HTML only has 2 spans? Let check HTML line 32-35. 
-       Ah, implies 2 lines turning into X? Or maybe 3 lines expected?
-       Standard hamburger usually has 3. Let's check HTML again.
-       HTML: 
-       <div class="hamburger">
-          <span></span>
-          <span></span>
-       </div>
-       Only 2 spans. Okay. I'll animate 2 spans into an X.
-    */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(2px, 2px);
-        /* Adjust based on visuals */
+    /* Contact Form */
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
     }
 
-    .hamburger.active span:nth-child(2) {
-        transform: rotate(-45deg) translate(2px, -2px);
-        margin-bottom: 0;
+    .btn {
+        width: 100%;
+        margin-left: 0 !important;
+        /* Override outline margin */
+        margin-bottom: 1rem;
     }
 
+    .btn-outline {
+        margin-left: 0;
+    }
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(2px, 2px);
+    /* Adjust based on visuals */
+}
+
+.hamburger.active span:nth-child(2) {
+    transform: rotate(-45deg) translate(2px, -2px);
+    margin-bottom: 0;
+}
+
+
+@media (max-width: 768px) {
 
     /* Layout Adjustments */
     .section-title {
@@ -829,7 +972,10 @@ footer {
     .process-grid,
     .contact-container {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2rem;
+        /* Reduced gap for mobile */
+        padding-top: 1rem;
+        /* Reduced top padding for mobile */
     }
 
     .about-image {
